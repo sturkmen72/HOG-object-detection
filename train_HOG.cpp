@@ -321,18 +321,17 @@ int test_trained_detector( String obj_det_filename, String test_dir, String vide
 
     namedWindow("detections", WINDOW_NORMAL);
 
-    for(int i=0;; i++)
+    for(size_t i=0;; i++)
     {
         Mat img;
 
         if (delay)
             cap >> img;
 		else
-		{
-			if(i < files.size()-1)
-			img = imread(files[i]);
-		}
-
+                {
+                    if(i < files.size()-1)
+                    img = imread(files[i]);
+                }
 
         if (img.empty())
             return 0;
