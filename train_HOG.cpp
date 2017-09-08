@@ -1,4 +1,3 @@
-
 #include "opencv2/imgproc.hpp"
 #include "opencv2/highgui.hpp"
 #include "opencv2/ml.hpp"
@@ -310,37 +309,36 @@ int test_trained_detector( String obj_det_filename, String test_dir, String vide
 
     int delay = 0;
     VideoCapture cap;
+
     if (videofilename != "")
     {
         cap.open(videofilename);
-        if (cap.isOpened())
-        {
-            delay = 1;
-        }
     }
 
     namedWindow("detections", WINDOW_NORMAL);
 
-    for(int i=0;; i++)
+    for( size_t i=0;; i++ )
     {
         Mat img;
 
-        if (delay)
+        if ( cap.isOpened() )
+        {
             cap >> img;
-		else
-		{
-			if(i < files.size()-1)
-			img = imread(files[i]);
-		}
+            delay = 1;
+        }
+        else if( i < files.size() )
+        {
+            img = imread( files[i] );
+            delay = 0;
+        }
 
-
-        if (img.empty())
+        if ( img.empty() )
             return 0;
 
         vector<Rect> detections;
         vector<double> foundWeights;
 
-       //this is for test it will be removed before merge
+        //this is for test it will be removed before merge
         DefaultPeopleDetector.detectMultiScale( img, detections, foundWeights );
         for (size_t j = 0; j < detections.size(); j++)
         {
