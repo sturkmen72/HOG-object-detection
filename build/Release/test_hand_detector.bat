@@ -1,0 +1,1 @@
+cpp-example-train_HOG -t -fn=my_hand_detector.yml -tv=0

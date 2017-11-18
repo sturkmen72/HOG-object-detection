@@ -143,6 +143,9 @@ int test_trained_detector( String obj_det_filename, String test_dir, String vide
 
     if ( videofilename != "" )
     {
+        if (videofilename.size() == 1 && isdigit(videofilename[0]))
+            cap.open(videofilename[0] - '0');
+        else
         cap.open( videofilename );
     }
 
@@ -256,20 +259,22 @@ int main( int argc, char** argv )
 
     Size pos_image_size = pos_lst[0].size();
 
-    for ( size_t i = 0; i < pos_lst.size(); ++i )
-    {
-        if( pos_lst[i].size() != pos_image_size )
-        {
-            cout << "All positive images should be same size!" << endl;
-            exit( 1 );
-        }
-    }
-
-    pos_image_size = pos_image_size / 8 * 8;
-
     if ( detector_width && detector_height )
     {
         pos_image_size = Size( detector_width, detector_height );
+    }
+    else
+    {
+        for (size_t i = 0; i < pos_lst.size(); ++i)
+        {
+            if (pos_lst[i].size() != pos_image_size)
+            {
+                cout << "All positive images should be same size!" << endl;
+                exit(1);
+            }
+        }
+
+        pos_image_size = pos_image_size / 8 * 8;
     }
 
     labels.assign( pos_lst.size(), +1 );
