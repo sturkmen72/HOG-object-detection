@@ -1,0 +1,1 @@
+cpp-example-train_HOG -dw=48 -dh=64 -fn=my_hand_detector.yml -pd=../../hand-pos -nd=/INRIAPerson/neg -tv=0
