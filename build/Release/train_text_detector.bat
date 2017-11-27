@@ -1,0 +1,1 @@
+cpp-example-train_HOG -v -d -dw=96 -dh=40 -fn=my_text_detector.yml -pd=../../text-pos -nd=../../eggs-neg -td=../../text-test
