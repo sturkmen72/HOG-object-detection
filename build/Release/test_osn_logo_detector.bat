@@ -1,0 +1,1 @@
+cpp-example-train_HOG -t -fn=my_osn_logo_detector.yml -td=../../osn_logo-test

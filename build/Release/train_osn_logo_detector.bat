@@ -1,0 +1,1 @@
+cpp-example-train_HOG -v -d -dw=88 -dh=48 -fn=my_osn_logo_detector.yml -pd=../../osn_logo-pos -nd=../../eggs-neg -td=../../osn_logo-test
