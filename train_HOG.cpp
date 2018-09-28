@@ -44,7 +44,7 @@ void get_svm_detector( const Ptr< SVM >& svm, vector< float > & hog_detector )
 */
 void convert_to_ml( const vector< Mat > & train_samples, Mat& trainData )
 {
-    //--Convert data
+    //Convert data
     const int rows = (int)train_samples.size();
     const int cols = (int)std::max( train_samples[0].cols, train_samples[0].rows );
     Mat tmp( 1, cols, CV_32FC1 ); //< used for transposition if needed
